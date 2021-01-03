@@ -1,6 +1,9 @@
 close all
 clear all
 
+% set village
+village = 'Caveman';
+
 % list of all the routes to test
 routesList = readmatrix('sailor_cossack_caveman_any%_routes');
 
@@ -10,7 +13,7 @@ timesList = zeros(length(routesList),1);
 
 % load the times table to run the routes through
 % times are stored in the variable `timesTable`
-load('CossackTimesTable.mat');
+load(strcat(village, 'TimesTable.mat'));
 
 % step through each time in the list
 % really innefficieicnent way to do this but w/e
