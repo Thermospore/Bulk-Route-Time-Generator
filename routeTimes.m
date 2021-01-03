@@ -1,9 +1,9 @@
-function [time] = routeTime(timesTable,route)
+function [times] = routeTimes(timesTable,route)
 % takes in a times table + a single route
-% calculates the route time based off the times table
+% returns an array of the segment times in that route
 
-% init time
-time = 0;
+% init times
+times = [];
 
 % step through each segment of the route
 for currentSegment = 1:length(route)-1
@@ -11,7 +11,7 @@ for currentSegment = 1:length(route)-1
     fromLevel = route(currentSegment);
     toLevel = route(currentSegment+1);
     
-    time = time + timesTable(fromLevel,toLevel);
+    times = [times timesTable(fromLevel,toLevel)];
 end
 
 end
