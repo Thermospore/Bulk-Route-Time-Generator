@@ -58,5 +58,5 @@ end
 %% format stuff
 % trim invalid routes
 % (invalid routes are represented by a 0 in the timesList)
-routesList= routesList(timesList~=0,:);
-timesList= timesList(timesList~=0);
+routesList = routesList(timesList~=0,:);
+timesList = timesList(timesList~=0);
