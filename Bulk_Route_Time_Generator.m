@@ -40,3 +40,8 @@ for currentRoute = 1:length(routesList)
     % store time
     timesList(currentRoute) = sum(times);
 end
+
+% trim invalid routes
+% (invalid routes are represented by a 0 in the timesList)
+routesList= routesList(timesList~=0,:);
+timesList= timesList(timesList~=0);
