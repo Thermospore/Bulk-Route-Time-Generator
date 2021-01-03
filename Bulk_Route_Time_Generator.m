@@ -1,11 +1,16 @@
 close all
 clear all
 
+%% user settings
 % set village (no caps, to be safe)
 %  - selects proper data files
 %  - triggers any village specific computations
 village = 'caveman';
 
+% set time to clip through kart door when it isn't unlocked
+kartPenalty = 0.58;
+
+%% code
 % list of all the routes to test
 routesList = readmatrix('sailor_cossack_caveman_any%_routes');
 
@@ -36,11 +41,17 @@ for currentRoute = 1:length(routesList)
     if sum(times==0) > 0
         continue
     end
-   
-    % add penalty if doing kart before it is unlocked
     
     % store time
     timesList(currentRoute) = sum(times);
+    
+    % add penalty if doing kart before it is unlocked
+    kartPos = find(route==3);
+    junglePos = find(route==4);
+    minesPos = find(route==5);
+    if strcmpi(village,'caveman') && (kartPos<junglePos || kartPos<minesPos)
+        timesList(currentRoute) = timesList(currentRoute) + kartPenalty;
+    end
 end
 
 % trim invalid routes
