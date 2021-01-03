@@ -1,0 +1,15 @@
+function [time] = routeTime(timesTable,route)
+% takes in a times table + a single route
+% calculates the route time based off the times table
+
+% init time
+time = 0;
+
+% step through each step in the route
+for routeProgress = 1:length(route)-1
+    
+    time = time + timesTable(;
+end
+
+end
+

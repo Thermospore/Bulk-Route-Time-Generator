@@ -8,3 +8,8 @@ routesList = readmatrix('sailor_cossack_caveman_any%_routes');
 % times are stored in the variable `timesTable`
 load('CossackTimesTable.mat');
 
+% step through each time in the list
+% really innefficieicnent way to do this but w/e
+for currentRoute = length(routesList)
+    
+end
