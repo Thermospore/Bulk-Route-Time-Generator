@@ -1,8 +1,10 @@
 close all
 clear all
 
-% set village
-village = 'Caveman';
+% set village (no caps, to be safe)
+%  - selects proper data files
+%  - triggers any village specific computations
+village = 'caveman';
 
 % list of all the routes to test
 routesList = readmatrix('sailor_cossack_caveman_any%_routes');
