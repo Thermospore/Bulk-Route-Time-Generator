@@ -10,8 +10,8 @@ village = 'caveman';
 % set time to clip through kart door when it isn't unlocked
 kartPenalty = 0.58;
 
-%% code
-% list of all the routes to test
+%% load stuff
+% pregenerated list of all the routes to test
 routesList = readmatrix('sailor_cossack_caveman_any%_routes');
 
 % initialize list of each route's time
@@ -22,6 +22,7 @@ timesList = zeros(length(routesList),1);
 % times are stored in the variable `timesTable`
 load(strcat(village, 'TimesTable.mat'));
 
+%% calculate stuff
 % step through each time in the list
 % really innefficieicnent way to do this but w/e
 for currentRoute = 1:length(routesList)
@@ -54,6 +55,7 @@ for currentRoute = 1:length(routesList)
     end
 end
 
+%% format stuff
 % trim invalid routes
 % (invalid routes are represented by a 0 in the timesList)
 routesList= routesList(timesList~=0,:);
