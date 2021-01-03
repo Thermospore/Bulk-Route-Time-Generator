@@ -12,7 +12,7 @@ kartPenalty = 0.58;
 
 %% load stuff
 % pregenerated list of all the routes to test
-routesList = readmatrix('sailor_cossack_caveman_any%_routes');
+routesList = readmatrix('sailor_cossack_caveman_any%_routes.csv');
 
 % initialize list of each route's time
 % invalid routes are represented by a 0
