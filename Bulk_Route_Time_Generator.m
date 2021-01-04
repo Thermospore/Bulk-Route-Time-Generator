@@ -5,18 +5,22 @@ clear all
 % set village (no caps, to be safe)
 %  - selects proper data files
 %  - triggers any village specific computations
-village = 'caveman';
+village = 'inca';
 
 % set time to clip through kart door when it isn't unlocked
 kartPenalty = 0.58;
 
 %% load stuff
 % pregenerated list of all the routes to test
-routesList = readmatrix('sailor_cossack_caveman_any%_routes.csv');
+if strcmpi(village,'sailor') || strcmpi(village,'cossack') || strcmpi(village,'caveman')
+    routesList = readmatrix('sailor_cossack_caveman_any%_routes.csv');
+elseif strcmpi(village,'inca')
+    routesList = readmatrix('inca_any%_routes.csv');
+end
 
 % initialize list of each route's time
 % invalid routes are represented by a 0
-timesList = zeros(length(routesList),1);
+timesList = zeros(size(routesList,1),1);
 
 % load the times table to run the routes through
 % times are stored in the variable `timesTable`
@@ -25,7 +29,7 @@ load(strcat(village, 'TimesTable.mat'));
 %% calculate stuff
 % step through each time in the list
 % really innefficieicnent way to do this but w/e
-for currentRoute = 1:length(routesList)
+for currentRoute = 1:size(routesList,1)
     
     % get the route and its times
     route = routesList(currentRoute,:);
