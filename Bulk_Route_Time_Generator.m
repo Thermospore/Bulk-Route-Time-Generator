@@ -13,9 +13,9 @@ kartPenalty = 0.58;
 %% load stuff
 % pregenerated list of all the routes to test
 if strcmpi(village,'sailor') || strcmpi(village,'cossack') || strcmpi(village,'caveman')
-    routesList = readmatrix('sailor_cossack_caveman_any%_routes.csv');
+    routesList = readmatrix('routeLists\sailor_cossack_caveman_any%_routes.csv');
 elseif strcmpi(village,'inca')
-    routesList = readmatrix('inca_any%_routes.csv');
+    routesList = readmatrix('routeLists\inca_any%_routes.csv');
 end
 
 % initialize list of each route's time
@@ -24,7 +24,7 @@ timesList = zeros(size(routesList,1),1);
 
 % load the times table to run the routes through
 % times are stored in the variable `timesTable`
-load(strcat(village, 'TimesTable.mat'));
+load(strcat('timesTables\', village, 'TimesTable.mat'));
 
 %% calculate stuff
 % step through each time in the list
