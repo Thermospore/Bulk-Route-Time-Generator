@@ -7,6 +7,9 @@ clear all
 %  - triggers any village specific computations
 village = 'sailor';
 
+% set time to clip through soveena door when it isn't unlocked
+squidPenalty = 1;
+
 % set time to clip through kart door when it isn't unlocked
 kartPenalty = 0.58;
 
@@ -35,9 +38,10 @@ for currentRoute = 1:size(routesList,1)
     route = routesList(currentRoute,:);
     times = routeTimes(timesTable,route);
     
-    % throw out route if subboss is unopened
+    % throw out route if subboss is unopened and it's not sailor
+    % (sailor can clip through door. That penalty is added later)
     % (subboss is always in position 2 in the timesTable)
-    if find(route==2) <= 4
+    if ~strcmpi(village,'sailor') && find(route==2) <= 4
         continue
     end
     
@@ -49,6 +53,11 @@ for currentRoute = 1:size(routesList,1)
     
     % store time
     timesList(currentRoute) = sum(times);
+    
+    % add penalty if doing soveena before it is unlocked
+    if strcmpi(village,'sailor') && find(route==2) <= 4
+        timesList(currentRoute) = timesList(currentRoute) + squidPenalty;
+    end
     
     % add penalty if doing kart before it is unlocked
     kartPos = find(route==3);
