@@ -5,7 +5,7 @@ clear all
 % set village (no caps, to be safe)
 %  - selects proper data files
 %  - triggers any village specific computations
-village = 'inca';
+village = 'sailor';
 
 % set time to clip through kart door when it isn't unlocked
 kartPenalty = 0.58;
