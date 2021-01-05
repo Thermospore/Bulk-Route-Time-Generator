@@ -8,7 +8,7 @@ clear all
 village = 'sailor';
 
 % set time to clip through soveena door when it isn't unlocked
-squidPenalty = 1;
+squidPenalty = 0; % haven't calculated this yet
 
 % set time to clip through kart door when it isn't unlocked
 kartPenalty = 0.58;
