@@ -6,6 +6,7 @@ clear all
 %  - selects proper data files
 %  - triggers any village specific computations
 village = 'sailor';
+secret = true;
 
 % set time to clip through soveena door when it isn't unlocked
 squidPenalty = 0; % haven't calculated this yet
@@ -14,8 +15,15 @@ squidPenalty = 0; % haven't calculated this yet
 kartPenalty = 0.58;
 
 %% load stuff
+if(secret)
+    village = ['secret' village];
+end
+
 % pregenerated list of all the routes to test
-if strcmpi(village,'sailor') || strcmpi(village,'cossack') || strcmpi(village,'caveman')
+% made using https://www.mathsisfun.com/combinatorics/combinations-permutations-calculator.html
+if secret
+    routesList = readmatrix('routeLists\secret_routes.csv');
+elseif strcmpi(village,'sailor') || strcmpi(village,'cossack') || strcmpi(village,'caveman')
     routesList = readmatrix('routeLists\sailor_cossack_caveman_any%_routes.csv');
 elseif strcmpi(village,'inca')
     routesList = readmatrix('routeLists\inca_any%_routes.csv');
@@ -41,7 +49,7 @@ for currentRoute = 1:size(routesList,1)
     % throw out route if subboss is unopened and it's not sailor
     % (sailor can clip through door. That penalty is added later)
     % (subboss is always in position 2 in the timesTable)
-    if ~strcmpi(village,'sailor') && find(route==2) <= 4
+    if ~strcmpi(village,'sailor') & find(route==2) <= 4
         continue
     end
     
