@@ -5,7 +5,7 @@ clear all
 % set village (no caps, to be safe)
 %  - selects proper data files
 %  - triggers any village specific computations
-village = 'sailor';
+village = 'caveman';
 secret = true;
 
 % set time to clip through soveena door when it isn't unlocked
